@@ -1,0 +1,371 @@
+body {
+    font-family: 'Rajdhani', 'Zain', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfcf7;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: normal;
+    font-family: 'Train One', sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1em;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    border-bottom: 2px solid #333;
+}
+
+#intro {
+    padding: 30px 0;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.core-thesis {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.main-section {
+    margin-bottom: 20px; /* Reduced space as content is collapsible */
+}
+
+.section-header-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0; /* Padding for the clickable header area */
+    cursor: pointer;
+    border-bottom: 1px solid #eee; /* A light line under the title before expanding */
+}
+
+.section-header-toggle.open {
+    border-bottom: 1px solid transparent; /* Remove line when open, content has its own divider */
+}
+
+.section-title {
+    font-family: 'Rajdhani', 'Zain', serif; /* Body font */
+    font-weight: bold; /* Bold */
+    font-size: 1.8em; /* Slightly adjusted size for toggle header */
+    margin-top: 0; /* Remove top margin as .section-header-toggle has padding */
+    margin-bottom: 0; /* Remove bottom margin */
+    color: #333;
+    text-align: left;
+}
+
+.chevron {
+    font-size: 1.5em;
+    color: #555;
+    transition: transform 0.3s ease;
+}
+
+/* .section-header-toggle.open .chevron - if we used transform rotate */
+
+.section-content {
+    /* display: none; */ /* Handled by JS initially, can be set here for no-JS fallback */
+    padding-top: 10px; /* Space between divider and content */
+    /* Animation can be added here for smoother expand/collapse */
+}
+
+.section-divider {
+    border: 0;
+    height: 2px;
+    background-color: #333;
+    margin-top: 0; /* Divider is now inside section-content */
+    margin-bottom: 20px; /* Space between divider and actual content */
+}
+
+/* Tutor Profiles Styling */
+.tutor-profiles {
+    display: flex;
+    justify-content: space-between; /* Distributes space between profiles */
+    flex-wrap: wrap; /* Allows profiles to wrap if needed, good for responsiveness */
+    gap: 20px; /* Space between tutor cards */
+    margin-top: 0;
+}
+
+.tutor-profile {
+    flex: 1 1 calc(33.333% - 20px); /* Allow grow/shrink, aim for 3 per row accounting for gap */
+    min-width: 250px; /* Minimum width before wrapping */
+    margin-bottom: 0; /* Gap handles this now */
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Crucial for calc width with padding/border */
+}
+
+.tutor-image {
+    width: 120px; /* Fixed width for tutor images */
+    height: 120px; /* Fixed height for tutor images */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-bottom: 15px;
+    border: 3px solid #ddd;
+}
+
+.tutor-profile h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tutor-profile p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Responsive adjustments for tutor profiles */
+@media (max-width: 768px) {
+    .tutor-profile {
+        width: calc(50% - 15px); /* Two profiles per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .tutor-profile {
+        width: 100%; /* One profile per row */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Session Sequence Styling */
+.session-sequence {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap for roadmap feel */
+    position: relative; /* For the main timeline line */
+    padding-left: 30px; /* Space for the timeline and dots */
+}
+
+/* The main vertical timeline */
+.session-sequence::before {
+    content: '';
+    position: absolute;
+    left: 10px; /* Position to the left of cards */
+    top: 10px; /* Start a bit down */
+    bottom: 10px; /* End a bit up */
+    width: 2px;
+    background-color: #ccc;
+    border: 1px dashed #aaa; /* Dotted/dashed line */
+}
+
+.session-card {
+    padding: 20px;
+    background-color: #fff; /* Default, free/paid will override if needed */
+    border-radius: 8px;
+    position: relative; /* For badge and dot positioning */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid #ddd; /* Keep a subtle border around cards */
+    /* Remove old left accent border, as the timeline serves this purpose now */
+    /* border-left: 5px solid #4CAF50; */ 
+    /* border-left: 5px solid #777; */
+}
+
+/* Dot on the timeline for each session card */
+.session-card::before {
+    content: '';
+    position: absolute;
+    left: -24px; /* (padding-left of parent / 2) + (dot-width / 2) - card's own padding */
+    top: 20px; /* Align with card title or top content */
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid #aaa; /* Match timeline line color */
+    border-radius: 50%;
+    z-index: 1; /* Above the main timeline line */
+}
+
+.session-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.session-card p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.session-price-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.session-card.free-session {
+    background-color: #e6f4ea;
+    /* border-left: 5px solid #4CAF50; */ /* Removed */
+}
+
+.session-card.free-session::before { /* Style dot for free sessions */
+    border-color: #4CAF50;
+    background-color: #4CAF50;
+}
+
+.session-card.free-session .session-price-badge {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.session-card.paid-session {
+    background-color: #f9f9f9;
+    /* border-left: 5px solid #777; */ /* Removed */
+}
+
+.session-card.paid-session::before { /* Style dot for paid sessions */
+    border-color: #777;
+    background-color: #777;
+}
+
+.session-card.paid-session .session-price-badge {
+    background-color: #777;
+    color: white;
+}
+
+/* Ensure general paragraph styling for sections is clean */
+.main-section > p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Supported Subjects List Styling */
+#supported-subjects ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+#supported-subjects ul li {
+    margin-bottom: 8px;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Contact Section Styling */
+.contact-content {
+    display: grid;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-info h3,
+.cta-section h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.contact-info ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.contact-info ul li:last-child {
+    border-bottom: none;
+}
+
+.cta-section {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.cta-section p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+    text-decoration: none;
+    color: white;
+}
